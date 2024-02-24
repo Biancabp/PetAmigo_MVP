@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="row"> 
+    <h1 class="processos">Conheça o pet</h1></div>
+    <div class="row d-flex">
+  <div class="col-md-5">
+    <img src="/static/assets/img/img.svg" alt="Imagem do animal">
+  </div>
+      <div class="col-md-5 offset-md-1">
+<div class="custom-div">
+  <div class="info">
+    <h3 class="mb-0 custom-h3">{{ animal.name }}</h3>
+    <p class="titles-meet">{{ animal.age }} anos</p>
+  </div> 
+  <div class="filter-container">
+    <div class="filter-item">{{ animal.breed }}</div>
+    <div class="filter-item">{{ animal.size }}</div>
+    <div class="filter-item">{{ animal.temperament }}</div>
+    <!-- Adicione mais filtros conforme necessário -->
+  </div>
+  <div class="descricao">
+    <p class="titles-meet">Descrição</p>
+    <span class="descri">Pet de temperamento {{ animal.temperament }}, exige um nivel de cuidado básico. Sua expectativa de vida é de 00 anos. {{ animal.description }}. Sua data de nascimento é: {{ animal.birthdate }}</span>
+  </div>
+  <div class="ficha-medica">
+    <p class="titles-meet">Ficha médica</p>
+    <span class="descri">Não apresenta doenças crônicas.</span>
+    <!-- Adicione outras informações da ficha médica aqui -->
+  </div>
+  <div class="buttons">
+    <form method="POST" action="{{ url_for('conhecer_pet', animal_id=animal.id) }}">
+      <button type="submit" class="btn custom-btn m-0">Quero Adotar</button>
+    </form>
+</div>
+
+
+  </div>
+</div>
+{% endblock %}

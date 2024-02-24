@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+  <div class="container">
+    <h1 class="processos">Editar Perfil</h1>
+    {% if current_user.is_volunteer %}
+      <p>Olá, {{ current_user.name }} (Voluntário)</p>
+    {% else %}
+      <p>Olá, {{ current_user.name }} (Adotante)</p>
+    {% endif %}
+    <form method="POST" class="form mt-4">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        <label for="name">Nome:</label>
+        {{ form.name(class="form-control", id="name") }}
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        {{ form.email(class="form-control", id="email") }}
+      </div>
+      <div class="form-group">
+        <label for="password">Nova senha:</label>
+        {{ form.password(class="form-control", id="password") }}
+      </div>
+      <div class="form-group">
+        <label for="confirm_password">Confirme a nova senha:</label>
+        {{ form.confirm_password(class="form-control", id="confirm_password") }}
+      </div>
+      <div class="form-group">
+        <label class="form-check-label">
+          {{ form.is_volunteer(class="form-check-input", onclick="showAuthPassword()") }}
+          Desejo me tornar um voluntário
+        </label>
+      </div>
+      <div class="form-group" id="authPassword" style="display:none;">
+        <label for="auth_password">Senha de autorização para se tornar voluntário:</label>
+        {{ form.auth_password(class="form-control", id="auth_password", type="password") }}
+      </div>
+
+      <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+    </form>
+
+    <!-- Botão de exclusão de conta -->
+    <form method="POST" action="{{ url_for('delete_account') }}" class="form mt-3" role="form" onsubmit="return confirm('Tem certeza que deseja excluir sua conta? Essa ação não pode ser desfeita.')">
+      <button type="submit" class="btn btn-danger">Excluir Conta</button>
+    </form>
+  </div>
+
+  <script>
+    function showAuthPassword() {
+      var authPasswordDiv = document.getElementById("authPassword");
+      var isVolunteerCheckbox = document.getElementById("is_volunteer");
+      
+      if (isVolunteerCheckbox.checked) {
+        authPasswordDiv.style.display = "block";
+        document.getElementById("auth_password").setAttribute("required", true);
+      } else {
+        authPasswordDiv.style.display = "none";
+        document.getElementById("auth_password").removeAttribute("required");
+      }
+    }
+  </script>
+</body>
+{% endblock %}

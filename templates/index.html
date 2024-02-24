@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <body>
+    <main class="main">
+      <section class="main__principal">
+        <h1 class="main__principal__principalText">
+          Bem-vindo ao <br> PET AMIGO!
+        </h1>
+        <img src="/static/assets/img/vector.svg" alt="Vetor Roxo" />
+        <p class="main__principal__text">
+          Unindo corações, encontrando lares: PETAmigo - Adote o amor de quatro patas!
+        </p>
+       <!-- <div class="contact">
+          <button href="{{ url_for('register') }}" class="contact__contribution">Cadastrar</button>
+          <a href="{{ url_for('login') }}" class="contact__link">Entrar</a>
+        </div> -->
+      </section>
+      <img src="/static/assets/img/dog.svg" alt="Dog" class="dog__img" />
+    </main>
+  </body>
+
+{% endblock %}

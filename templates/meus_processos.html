@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+  <div class="container">
+ <div class="row">
+  <div class="col-12">
+  <h1 class="processos">Meus Processos de Adoção</h1>
+ </div>
+ </div>
+
+<div class="row table">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Animal</th>
+        <th>Adotante</th>
+        <th>Kit de Cuidados</th>
+        <th>Visita Marcada</th>
+        <th>Entrevista Marcada</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for processo in processos %}
+        <tr>
+          <td>{{ processo.animal_name }}</td>
+          <td>{{ processo.user_name }}</td>
+          <td>{{ "Sim" if processo.kit_cuidados else "Não" }}</td>
+          <td>{{ processo.visita_marcada.strftime('%d/%m/%Y') if processo.visita_marcada else '' }}</td>
+          <td>{{ processo.entrevista_marcada.strftime('%d/%m/%Y') if processo.entrevista_marcada else '' }}</td>
+          <td>{{ processo.status }}</td>
+          <td class="action-cell">
+            <div class="action-buttons">
+              <a href="{{ url_for('editar_processo', adoption_id=processo.id) }}" class="edit-button">
+                <i class='bx bxs-edit-alt' style="color: #02A4C8;"></i> <!-- Ícone de editar -->
+              </a>
+              <form method="POST" action="{{ url_for('excluir_processo', adoption_id=processo.id) }}" class="form" role="form" onsubmit="return confirm('Tem certeza que deseja excluir o processo de adoção do animal {{ processo.animal_name }}? Essa ação não pode ser desfeita.')">
+                <button type="submit" class="delete-button">
+                  <i class='bx bx-block' style="color: #02A4C8;"></i> <!-- Ícone de excluir -->
+                </button>
+              </form>
+            </div>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</div>
+
+</body>
+{% endblock %}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PETAmigo</title>
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- Seus links para CSS e outros recursos aqui -->
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom custom-border border-warning">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="/static/assets/img/Logo.svg" alt="Ícone" width="190" height="auto">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      {% if current_user.is_authenticated %}
+      <!-- Links de navegação -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('adoption') }}">Adoção</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('index') }}">Acompanhamento</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('index') }}">Doação</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('index') }}">Suporte</a>
+          </li>
+        </ul>
+      {% else %}
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+
+
+  <!-- Inclua os arquivos CSS e JS do Bootstrap (substitua os links pelos arquivos em seu servidor) -->
+<body>
+
+<!-- Inclua os arquivos JS do Bootstrap (substitua os links pelos arquivos em seu servidor) -->
+
+    <div class="content">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+
+      
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+  
+</html>

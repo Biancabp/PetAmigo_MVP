@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+  <div class="container">
+
+    <div class="row d-flex align-items-center">
+      <div class="col-12">
+        <div>
+          <h1 class="processos">Pets</h1>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="custom-h3">Cachorros e gatos</h2>
+
+    <div class="row">
+      {% for animal in animals %}
+      <div class="col-3">
+        <div class="animal-card">
+          <div class="gray-image"></div>
+          <div class="animal-info">
+            <h3 class="titles-meet">{{ animal.name }}</h3>
+            <p class="descri">{{ animal.age }} anos</p>
+            <div class="race-size-info">
+              <p class="filter-item mr-2 saber">{{ animal.breed }}</p>
+              <p class="filter-item mr-2 saber">{{ animal.size }}</p>
+            </div>
+
+<a href="{{ url_for('pet_details', animal_id=animal.id) }}" class="btn custom-btn">Saber mais</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <a href="{{ url_for('add_pet') }}" class="btn custom-btn">Cadastrar animal</a>
+  </div>
+</body>
+{% endblock %}

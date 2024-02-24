@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<body class="background">
+  <div class="">
+    <div class="offset-3 col-6">
+      <div class="container d-flex flex-column justify-content-center align-items-center">
+        <div class="card d-flex flex-column justify-content-center align-items-center">
+          <h1>Cadastro</h1>
+          <form action="/register" method="post">
+            {{ form.csrf_token }}
+
+            <div class="form-group">
+              <label for="name">{{ form.name.label }}</label>
+              {{ form.name (class="form-control", id="name")}}
+            </div>
+
+            <div class="form-group senha">
+              <label for="email">{{ form.email.label }}</label>
+              {{ form.email (class="form-control", id="email") }}
+            </div>
+
+            <div class="form-group senha">
+              <label for="password">{{ form.password.label }}</label>
+              {{ form.password (class="form-control", id="password") }}
+            </div>
+
+            <div class="form-group senha">
+              <label for="confirm_password">{{ form.confirm_password.label }}</label>
+              {{ form.confirm_password (class="form-control", id="confirm_password") }}
+            </div>
+
+           <button type="submit" class="btn btn-warning fw-semi-bold btn-align-left">CADASTRAR</button>
+          </form>
+
+          
+          <div><span>Já possui uma conta? <a href="{{ url_for('login') }}" class="custom-link"> Entre!</a></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+  <div class="container adocao">
+  <h1 class="processos">Adoção</h1>
+
+  <h2 class="custom-h3">Cachorros</h2>
+  <div class="row">
+    {% for dog in dogs %}
+    <div class="col-3">
+      <div class="animal-card">
+        <div class="gray-image"></div>
+        <div class="animal-info">
+          <h3 class="titles-meet">{{ dog.name }}</h3>
+          <p class="descri">{{ dog.age }} anos</p>
+          <div class="race-size-info">
+            <p class="filter-item">{{ dog.breed }}</p>
+            <p class="filter-item">{{ dog.size }}</p>
+          </div>
+          <a href="{{ url_for('conhecer_pet', animal_id=dog.id) }}" class="btn custom-btn">Saber mais</a>
+        </div>
+      </div></div>
+    {% endfor %}
+  </div>
+
+  <h2 class="custom-h3 gatos">Gatos</h2>
+  <div class="row">
+    {% for cat in cats %}
+      <div class="animal-card">
+        <div class="gray-image"></div>
+        <div class="animal-info">
+          <h3 class="titles-meet">{{ cat.name }}</h3>
+          <p class="descri">{{ cat.age }} anos</p>
+          <div class="race-size-info">
+            <p class="filter-item">{{ cat.breed }}</p>
+            <p class="filter-item">{{ cat.size }}</p>
+          </div>
+          <a href="{{ url_for('conhecer_pet', animal_id=cat.id) }}" class="btn custom-btn">Saber mais</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div></body>
+{% endblock %}

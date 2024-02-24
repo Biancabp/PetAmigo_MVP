@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body>
+  <div class="container">
+    <h1 class="processos">Atualizar informações</h1>
+
+    <h2 class="custom-h3">Informações</h2>
+    <div class="row d-flex">
+      <form method="post" class="mt-3">
+        {{ form.hidden_tag() }}
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group mb-4">
+              {{ form.name.label }}
+              {{ form.name(class="form-control", required="required") }}
+            </div>
+            <div class="form-group mb-4">
+              {{ form.age.label }}
+              {{ form.age(class="form-control", required="required") }}
+            </div>
+            <div class="form-group mb-4">
+              {{ form.birthdate.label }}
+              {{ form.birthdate(class="form-control", required="required") }}
+            </div>
+            <div class="form-group mb-4 form-inline">
+              {{ form.sex.label(class="mr-2") }}
+              {{ form.sex(class="form-check-input", required="required") }}
+            </div>
+            <button type="submit" class="btn custom-btn genero ml-0">Salvar</button>
+          </div>
+
+          <div class="col-4 offset-1">
+            <div class="form-group mb-4">
+              {{ form.species.label }}
+              {{ form.species(class="form-control", required="required") }}
+            </div>
+            <div class="form-group mb-4">
+              {{ form.breed.label }}
+              {{ form.breed(class="form-control", required="required") }}
+            </div>
+            <div class="form-group mb-4">
+              {{ form.size.label }}
+              {{ form.size(class="form-control", required="required") }}
+            </div>
+            <div class="form-group mb-4">
+              {{ form.color.label }}
+              {{ form.color(class="form-control", required="required") }}
+            </div>
+            <div class="form-group mb-4">
+              {{ form.temperament.label }}
+              {{ form.temperament(class="form-control", required="required") }}
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div></body>
+{% endblock %}
